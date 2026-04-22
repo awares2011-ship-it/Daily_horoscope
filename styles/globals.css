@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cosmos-purple: #6C5CE7;
+    --nebula-pink: #fd79a8;
+    --nebula-gold: #ffeaa7;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-dark-900 text-white font-body overflow-x-hidden;
+    min-height: 100dvh;
+  }
+
+  .dark body {
+    @apply bg-dark-900;
+  }
+
+  .light body {
+    @apply bg-slate-100 text-slate-900;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+
+  .cosmos-btn {
+    @apply px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200
+           bg-gradient-to-r from-cosmos-500 to-nebula-pink text-white
+           hover:opacity-90 hover:scale-105 active:scale-95 shadow-cosmos;
+  }
+
+  .page-container {
+    @apply max-w-lg mx-auto px-4 pb-24 pt-4 relative z-10;
+  }
+
+  .section-title {
+    @apply font-display font-bold text-white text-xl mb-4;
+  }
+}
+
+@layer utilities {
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #a29bfe, #fd79a8, #ffeaa7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* PWA safe areas */
+@supports (padding: env(safe-area-inset-top)) {
+  .safe-top { padding-top: env(safe-area-inset-top); }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+}
